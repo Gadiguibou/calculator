@@ -1,0 +1,172 @@
+:root {
+  --darkest: #212629;
+  --darkest-gradient-lighter: #252A2E;
+  --darkest-gradient-darker: #1D2124;
+  --dark: #2C3033;
+  --dark-gradient-lighter: #303538;
+  --dark-gradient-darker: #272B2E;
+  --dark-hover: #2D3438;
+  --grey: #9C9C9C;
+  --light: #98A8B5;
+  --white: #FFFFFF;
+  --highlight: #CC8147;/* #6BBBDB; */
+  --highlight-darker: #996035;/* #4B7A99; */
+}
+
+html {
+  background-color: var(--darkest);
+  font-family: 'Noto Sans', sans-serif;
+}
+
+main {
+  box-sizing: border-box;
+  max-width: 1000px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 20vh 0;
+  background-color: var(--dark);
+}
+
+.calc-container {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  margin: 0 10px;
+  padding: 5px;
+  border: thin solid black;
+  border-radius: 10px;
+}
+
+
+.input-display {
+  display: flex;
+  flex: 0 1 100px;
+  margin: 5px;
+  padding: 5px;
+  background-color: var(--darkest);
+  border-radius: 10px;
+  align-items: center;
+}
+
+.input-text {
+  width: 100%;
+  color: var(--white);
+  text-align: right;
+  font-size: 48px;
+  line-height: 1;
+  vertical-align: center;
+  margin: 0 10px;
+  font-family: 'Noto Serif', serif;
+}
+
+.keypad {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+                   "seven  eight  nine  divide"
+                   "four   five   six   mult"
+                   "one    two    three substr"
+                   "dot    zero   equal add";
+}
+
+button {
+  margin: 5px;
+  border-radius: 10px;
+  background-color: var(--darkest);
+  background: -webkit-linear-gradient(top, var(--darkest-gradient-lighter), var(--darkest-gradient-darker));
+  color: var(--white);
+  border: 1px solid var(--darkest);
+  border-bottom: 4px solid var(--highlight);
+  font-size: 48px;
+  outline: none;
+  transition: all 0.03s ease;
+  user-select: none;
+}
+
+button:disabled {
+  background: var(--darkest-gradient-darker);
+  color: var(--grey);
+  border-bottom: 4px solid var(--grey);
+}
+
+button:disabled:hover {
+  background: var(--darkest-gradient-darker);
+  border-bottom: 4px solid var(--grey);
+}
+
+button:hover {
+  background-color: var(--dark-hover);
+  background: -webkit-linear-gradient(top, var(--dark-gradient-lighter), var(--dark-gradient-darker));
+  border-bottom: 4px solid var(--highlight);
+}
+
+button:active {
+  background: var(--darkest);
+  border-bottom: 2px solid var(--highlight-darker);
+}
+
+.seven {
+  grid-area: seven;
+}
+
+.eight {
+  grid-area: eight;
+}
+
+.nine {
+  grid-area: nine;
+}
+
+.four {
+  grid-area: four;
+}
+
+.five {
+  grid-area: five;
+}
+
+.six {
+  grid-area: six;
+}
+
+.one {
+  grid-area: one;
+}
+
+.two {
+  grid-area: two;
+}
+
+.three {
+  grid-area: three;
+}
+
+.zero {
+  grid-area: zero;
+}
+
+.dot-btn {
+  grid-area: dot;
+}
+
+.divide-btn {
+  grid-area: divide;
+}
+
+.mult-btn {
+  grid-area: mult;
+}
+
+.substr-btn {
+  grid-area: substr;
+}
+
+.add-btn {
+  grid-area: add;
+}
+
+.equal-btn {
+  grid-area: equal;
+}
