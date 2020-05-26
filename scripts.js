@@ -31,3 +31,15 @@ numberButtons.forEach((numberButton) => {
     displayContent.textContent += numberButton.textContent;
   });
 });
+
+const operate = (firstOperand, secondOperand, operator) => {
+  if (operator === "+") {
+    return add(firstOperand, secondOperand);
+  } else if (operator === "-") {
+    return substract(firstOperand, secondOperand);
+  } else if (operator === "×") {
+    return multiply(firstOperand, secondOperand);
+  } else if (operator === "÷") {
+    return divide(firstOperand, secondOperand);
+  }
+};
