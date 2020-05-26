@@ -16,15 +16,6 @@ const divide = (a, b) => {
 
 const displayContent = document.querySelector(".input-text");
 
-const clearButton = document.querySelector(".clear-button");
-
-const clearDisplay = () => {
-  displayContent.textContent = "";
-};
-
-// Clear display when clearButton is clicked.
-clearButton.addEventListener("click", clearDisplay);  
-
 const numberButtons = document.querySelectorAll(".number-button");
 
 // Add numbers to the screen when numberButtons are clicked
@@ -40,6 +31,18 @@ dotButton.addEventListener("click", () => {
   displayContent.textContent += ".";
   dotButton.disabled = true;
 });
+
+const clearButton = document.querySelector(".clear-button");
+
+const clearDisplay = () => {
+  displayContent.textContent = "";
+};
+
+// Clear display when clearButton is clicked.
+clearButton.addEventListener("click", () => {
+  clearDisplay();
+  dotButton.disabled = false;
+});  
 
 const operate = (firstOperand, secondOperand, operator) => {
   if (operator === "+") {
