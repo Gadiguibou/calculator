@@ -138,6 +138,8 @@ window.addEventListener("keydown", (e) => {
     executeOnOperatorPress("×");
   } else if (e.key === "/") {
     executeOnOperatorPress("÷");
+  } else if (e.key === "Enter" || e.key === "=") {
+    executeOnEqualPress();
   }
 });
 
