@@ -98,6 +98,24 @@ main {
   overflow: hidden;
 }
 
+.backspace-button-container {
+  flex: 0 1 40px;
+}
+
+.backspace-button {
+  margin-right: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.backspace-button:active {
+  opacity: 0.6;
+}
+
+.backspace-button:hover {
+  fill: var(--lighter);
+}
+
 .keypad {
   display: grid;
   flex: 1 1 auto;
