@@ -22,3 +22,12 @@ const clearButton = document.querySelector(".clear-button");
 clearButton.addEventListener("click", function clearDisplay() {
   displayContent.textContent = "";
 });
+
+const numberButtons = document.querySelectorAll(".number-button");
+
+// Add numbers to the screen when numberButtons are clicked
+numberButtons.forEach((numberButton) => {
+  numberButton.addEventListener("click", function printNumberToDisplay() {
+    displayContent.textContent += numberButton.textContent;
+  });
+});
