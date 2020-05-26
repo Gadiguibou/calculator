@@ -18,10 +18,12 @@ const displayContent = document.querySelector(".input-text");
 
 const clearButton = document.querySelector(".clear-button");
 
-// Clear display when clearButton is clicked.
-clearButton.addEventListener("click", function clearDisplay() {
+const clearDisplay = () => {
   displayContent.textContent = "";
-});
+};
+
+// Clear display when clearButton is clicked.
+clearButton.addEventListener("click", clearDisplay);
 
 const numberButtons = document.querySelectorAll(".number-button");
 
