@@ -23,7 +23,7 @@ const clearDisplay = () => {
 };
 
 // Clear display when clearButton is clicked.
-clearButton.addEventListener("click", clearDisplay);
+clearButton.addEventListener("click", clearDisplay);  
 
 const numberButtons = document.querySelectorAll(".number-button");
 
@@ -74,4 +74,16 @@ operatorButtons.forEach((operatorButton) => {
       operator = operatorButton.textContent;
     }
   });
+});
+
+const equalButton = document.querySelector(".equal-button");
+
+equalButton.addEventListener("click", () => {
+  if (!displayContent.textContent) {
+    displayContent.textContent = storedOperand;
+  } else {
+    displayContent.textContent = operate(storedOperand, Number(displayContent.textContent), operator);
+  }
+  operator = "";
+  storedOperand = null;
 });
