@@ -14,6 +14,54 @@ const divide = (a, b) => {
   return a / b;
 };
 
+const operate = (firstOperand, secondOperand, operator) => {
+  if (operator === "+") {
+    return add(firstOperand, secondOperand);
+  } else if (operator === "−") {
+    return substract(firstOperand, secondOperand);
+  } else if (operator === "×") {
+    return multiply(firstOperand, secondOperand);
+  } else if (operator === "÷") {
+    return divide(firstOperand, secondOperand);
+  }
+};
+
+const displayContent = document.querySelector(".input-text");
+
+const clearDisplay = () => {
+  displayContent.textContent = "";
+};
+
+let operator = "";
+let storedOperand;
+
+const executeOnOperatorPress = (operatorContent) => {
+  // Update operator if there's already one and the display is empty
+  if (!displayContent.textContent && operator) {
+    operator = operatorContent;
+  }
+  //  Store result of current operation in storedOperand if chaining operations
+  else if (displayContent.textContent && operator) {
+    storedOperand = operate(
+      storedOperand,
+      Number(displayContent.textContent),
+      operator
+    );
+    clearDisplay();
+    operator = operatorContent;
+  }
+  // Do nothing if operatorButton is pressed when there's no value to compute
+  else if (!displayContent.textContent && !operator) {
+    return;
+  }
+  // Store operand and operator and wait for next input (default case)
+  else if (displayContent.textContent && !operator) {
+    storedOperand = Number(displayContent.textContent);
+    clearDisplay();
+    operator = operatorContent;
+  }
+};
+
 const executeOnEqualPress = () => {
   if (!operator) {
     return;
@@ -29,8 +77,6 @@ const executeOnEqualPress = () => {
   operator = "";
   storedOperand = null;
 }
-
-const displayContent = document.querySelector(".input-text");
 
 const numberButtons = document.querySelectorAll(".number-button");
 
@@ -50,10 +96,6 @@ dotButton.addEventListener("click", () => {
 });
 
 const clearButton = document.querySelector(".clear-button");
-
-const clearDisplay = () => {
-  displayContent.textContent = "";
-};
 
 // Clear display when clearButton is clicked.
 clearButton.addEventListener("click", () => {
@@ -99,49 +141,7 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-const operate = (firstOperand, secondOperand, operator) => {
-  if (operator === "+") {
-    return add(firstOperand, secondOperand);
-  } else if (operator === "−") {
-    return substract(firstOperand, secondOperand);
-  } else if (operator === "×") {
-    return multiply(firstOperand, secondOperand);
-  } else if (operator === "÷") {
-    return divide(firstOperand, secondOperand);
-  }
-};
-
 const operatorButtons = document.querySelectorAll(".operator-button");
-
-let operator = "";
-let storedOperand;
-
-const executeOnOperatorPress = (operatorContent) => {
-  // Update operator if there's already one and the display is empty
-  if (!displayContent.textContent && operator) {
-    operator = operatorContent;
-  }
-  //  Store result of current operation in storedOperand if chaining operations
-  else if (displayContent.textContent && operator) {
-    storedOperand = operate(
-      storedOperand,
-      Number(displayContent.textContent),
-      operator
-    );
-    clearDisplay();
-    operator = operatorContent;
-  }
-  // Do nothing if operatorButton is pressed when there's no value to compute
-  else if (!displayContent.textContent && !operator) {
-    return;
-  }
-  // Store operand and operator and wait for next input (default case)
-  else if (displayContent.textContent && !operator) {
-    storedOperand = Number(displayContent.textContent);
-    clearDisplay();
-    operator = operatorContent;
-  }
-};
 
 operatorButtons.forEach((operatorButton) => {
   operatorButton.addEventListener("click", executeOnOperatorPress(operatorButton.textContent));
