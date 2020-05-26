@@ -50,7 +50,30 @@ allClearButton.addEventListener("click", () => {
   operator = "";
   storedOperand = null;
   clearDisplay();
-})
+});
+
+window.addEventListener("keydown", (e) => {
+  if (
+    e.key === "1" ||
+    e.key === "2" ||
+    e.key === "3" ||
+    e.key === "4" ||
+    e.key === "5" ||
+    e.key === "6" ||
+    e.key === "7" ||
+    e.key === "8" ||
+    e.key === "9" ||
+    e.key === "0"
+  ) {
+    displayContent.textContent += e.key;
+  } else if (e.key === "Backspace") {
+    displayContent.textContent = displayContent.textContent.slice(0, -1);
+  } else if (e.key === "." || e.key === ",") {
+    if (!displayContent.textContent.includes(".")) {
+      displayContent.textContent += ".";
+    }
+  }
+});
 
 const operate = (firstOperand, secondOperand, operator) => {
   if (operator === "+") {
@@ -74,17 +97,21 @@ operatorButtons.forEach((operatorButton) => {
     // Update operator if there's already one and the display is empty
     if (!displayContent.textContent && operator) {
       operator = operatorButton.textContent;
-    } 
+    }
     //  Store result of current operation in storedOperand if chaining operations
     else if (displayContent.textContent && operator) {
-      storedOperand = operate(storedOperand, Number(displayContent.textContent), operator);
+      storedOperand = operate(
+        storedOperand,
+        Number(displayContent.textContent),
+        operator
+      );
       clearDisplay();
       operator = operatorButton.textContent;
     }
-    // Do nothing if operatorButton is pressed when there's no value to compute 
+    // Do nothing if operatorButton is pressed when there's no value to compute
     else if (!displayContent.textContent && !operator) {
       return;
-    } 
+    }
     // Store operand and operator and wait for next input (default case)
     else if (displayContent.textContent && !operator) {
       storedOperand = Number(displayContent.textContent);
@@ -102,7 +129,11 @@ equalButton.addEventListener("click", () => {
   } else if (!displayContent.textContent) {
     displayContent.textContent = storedOperand;
   } else {
-    displayContent.textContent = operate(storedOperand, Number(displayContent.textContent), operator);
+    displayContent.textContent = operate(
+      storedOperand,
+      Number(displayContent.textContent),
+      operator
+    );
   }
   operator = "";
   storedOperand = null;
