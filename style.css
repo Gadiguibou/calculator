@@ -63,6 +63,10 @@ main {
   opacity: 0.6;
 }
 
+.clear-button:hover > polygon {
+  fill: var(--lighter);
+}
+
 .all-clear-button {
   flex: 0 1 50px;
   border: 2px solid var(--light);
