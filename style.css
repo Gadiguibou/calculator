@@ -161,26 +161,26 @@ button:active {
   grid-area: zero;
 }
 
-.dot-btn {
+.dot-button {
   grid-area: dot;
 }
 
-.divide-btn {
+.divide-button {
   grid-area: divide;
 }
 
-.mult-btn {
+.mult-button {
   grid-area: mult;
 }
 
-.substr-btn {
+.substr-button {
   grid-area: substr;
 }
 
-.add-btn {
+.add-button {
   grid-area: add;
 }
 
-.equal-btn {
+.equal-button {
   grid-area: equal;
 }
