@@ -145,10 +145,14 @@ window.addEventListener("keydown", (e) => {
 
 const operatorButtons = document.querySelectorAll(".operator-button");
 
-operatorButtons.forEach((operatorButton) => {
-  operatorButton.addEventListener("click", executeOnOperatorPress(operatorButton.textContent));
-});
+  operatorButtons.forEach((operatorButton) => {
+    operatorButton.addEventListener("click", () => {
+      executeOnOperatorPress(operatorButton.textContent);
+    });
+  });
 
 const equalButton = document.querySelector(".equal-button");
 
-equalButton.addEventListener("click", executeOnEqualPress());
+equalButton.addEventListener("click", () => {
+  executeOnEqualPress();
+});
