@@ -14,6 +14,22 @@ const divide = (a, b) => {
   return a / b;
 };
 
+const executeOnEqualPress = () => {
+  if (!operator) {
+    return;
+  } else if (!displayContent.textContent) {
+    displayContent.textContent = storedOperand;
+  } else {
+    displayContent.textContent = operate(
+      storedOperand,
+      Number(displayContent.textContent),
+      operator
+    );
+  }
+  operator = "";
+  storedOperand = null;
+}
+
 const displayContent = document.querySelector(".input-text");
 
 const numberButtons = document.querySelectorAll(".number-button");
@@ -133,18 +149,4 @@ operatorButtons.forEach((operatorButton) => {
 
 const equalButton = document.querySelector(".equal-button");
 
-equalButton.addEventListener("click", () => {
-  if (!operator) {
-    return;
-  } else if (!displayContent.textContent) {
-    displayContent.textContent = storedOperand;
-  } else {
-    displayContent.textContent = operate(
-      storedOperand,
-      Number(displayContent.textContent),
-      operator
-    );
-  }
-  operator = "";
-  storedOperand = null;
-});
+equalButton.addEventListener("click", executeOnEqualPress());
