@@ -92,33 +92,35 @@ const operatorButtons = document.querySelectorAll(".operator-button");
 let operator = "";
 let storedOperand;
 
+const executeOnOperatorPress = (operatorContent) => {
+  // Update operator if there's already one and the display is empty
+  if (!displayContent.textContent && operator) {
+    operator = operatorContent;
+  }
+  //  Store result of current operation in storedOperand if chaining operations
+  else if (displayContent.textContent && operator) {
+    storedOperand = operate(
+      storedOperand,
+      Number(displayContent.textContent),
+      operator
+    );
+    clearDisplay();
+    operator = operatorContent;
+  }
+  // Do nothing if operatorButton is pressed when there's no value to compute
+  else if (!displayContent.textContent && !operator) {
+    return;
+  }
+  // Store operand and operator and wait for next input (default case)
+  else if (displayContent.textContent && !operator) {
+    storedOperand = Number(displayContent.textContent);
+    clearDisplay();
+    operator = operatorContent;
+  }
+};
+
 operatorButtons.forEach((operatorButton) => {
-  operatorButton.addEventListener("click", () => {
-    // Update operator if there's already one and the display is empty
-    if (!displayContent.textContent && operator) {
-      operator = operatorButton.textContent;
-    }
-    //  Store result of current operation in storedOperand if chaining operations
-    else if (displayContent.textContent && operator) {
-      storedOperand = operate(
-        storedOperand,
-        Number(displayContent.textContent),
-        operator
-      );
-      clearDisplay();
-      operator = operatorButton.textContent;
-    }
-    // Do nothing if operatorButton is pressed when there's no value to compute
-    else if (!displayContent.textContent && !operator) {
-      return;
-    }
-    // Store operand and operator and wait for next input (default case)
-    else if (displayContent.textContent && !operator) {
-      storedOperand = Number(displayContent.textContent);
-      clearDisplay();
-      operator = operatorButton.textContent;
-    }
-  });
+  operatorButton.addEventListener("click", executeOnOperatorPress(operatorButton.textContent));
 });
 
 const equalButton = document.querySelector(".equal-button");
