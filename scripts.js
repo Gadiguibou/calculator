@@ -156,3 +156,9 @@ const equalButton = document.querySelector(".equal-button");
 equalButton.addEventListener("click", () => {
   executeOnEqualPress();
 });
+
+const backspaceButton = document.querySelector(".backspace-button");
+
+backspaceButton.addEventListener("click", () => {
+  displayContent.textContent = displayContent.textContent.slice(0, -1);
+});
