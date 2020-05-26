@@ -44,6 +44,15 @@ clearButton.addEventListener("click", () => {
   dotButton.disabled = false;
 });
 
+const allClearButton = document.querySelector(".all-clear-button");
+
+allClearButton.addEventListener("click", () => {
+  operator = "";
+  storedOperand = null;
+  clearDisplay();
+  dotButton.disabled = false;
+})
+
 const operate = (firstOperand, secondOperand, operator) => {
   if (operator === "+") {
     return add(firstOperand, secondOperand);
