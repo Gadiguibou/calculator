@@ -120,7 +120,6 @@ button {
   border-bottom: 4px solid var(--highlight);
   font-size: 48px;
   outline: none;
-  transition: all 0.03s ease;
   user-select: none;
 }
 
