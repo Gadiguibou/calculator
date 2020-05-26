@@ -8,6 +8,7 @@
   --dark-hover: #2D3438;
   --grey: #9C9C9C;
   --light: #98A8B5;
+  --lighter: #AEC0CF;
   --white: #FFFFFF;
   --highlight: #CC8147;/* #6BBBDB; */
   --highlight-darker: #996035;/* #4B7A99; */
@@ -62,12 +63,32 @@ main {
   opacity: 0.2;
 }
 
+.all-clear-button {
+  flex: 0 1 50px;
+  border: 2px solid var(--light);
+  border-radius: 15px;
+  color: var(--light);
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 20px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.all-clear-button:hover {
+  border: 2px solid var(--lighter);
+  color: var(--lighter);
+}
+
+.all-clear-button:active {
+  opacity: 0.6;
+}
+
 .input-text {
   flex: 1 1 auto;
   color: var(--white);
   text-align: right;
   font-size: 48px;
-  line-height: 1;
   margin: 0 10px;
   font-family: 'Noto Serif', serif;
   overflow: hidden;

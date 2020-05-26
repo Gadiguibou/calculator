@@ -42,7 +42,7 @@ const clearDisplay = () => {
 clearButton.addEventListener("click", () => {
   clearDisplay();
   dotButton.disabled = false;
-});  
+});
 
 const operate = (firstOperand, secondOperand, operator) => {
   if (operator === "+") {
