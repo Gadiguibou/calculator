@@ -100,7 +100,9 @@ operatorButtons.forEach((operatorButton) => {
 const equalButton = document.querySelector(".equal-button");
 
 equalButton.addEventListener("click", () => {
-  if (!displayContent.textContent) {
+  if (!operator) {
+    return;
+  } else if (!displayContent.textContent) {
     displayContent.textContent = storedOperand;
   } else {
     displayContent.textContent = operate(storedOperand, Number(displayContent.textContent), operator);
