@@ -37,7 +37,7 @@ numberButtons.forEach((numberButton) => {
 const operate = (firstOperand, secondOperand, operator) => {
   if (operator === "+") {
     return add(firstOperand, secondOperand);
-  } else if (operator === "-") {
+  } else if (operator === "−") {
     return substract(firstOperand, secondOperand);
   } else if (operator === "×") {
     return multiply(firstOperand, secondOperand);
