@@ -34,6 +34,13 @@ numberButtons.forEach((numberButton) => {
   });
 });
 
+const dotButton = document.querySelector(".dot-button");
+
+dotButton.addEventListener("click", () => {
+  displayContent.textContent += ".";
+  dotButton.disabled = true;
+});
+
 const operate = (firstOperand, secondOperand, operator) => {
   if (operator === "+") {
     return add(firstOperand, secondOperand);
@@ -62,6 +69,7 @@ operatorButtons.forEach((operatorButton) => {
       storedOperand = operate(storedOperand, Number(displayContent.textContent), operator);
       clearDisplay();
       operator = operatorButton.textContent;
+      dotButton.disabled = false;
     }
     // Do nothing if operatorButton is pressed when there's no value to compute 
     else if (!displayContent.textContent && !operator) {
@@ -72,6 +80,7 @@ operatorButtons.forEach((operatorButton) => {
       storedOperand = Number(displayContent.textContent);
       clearDisplay();
       operator = operatorButton.textContent;
+      dotButton.disabled = false;
     }
   });
 });
@@ -86,4 +95,5 @@ equalButton.addEventListener("click", () => {
   }
   operator = "";
   storedOperand = null;
+  dotButton.disabled = false;
 });
