@@ -72,6 +72,14 @@ window.addEventListener("keydown", (e) => {
     if (!displayContent.textContent.includes(".")) {
       displayContent.textContent += ".";
     }
+  } else if (e.key === "+") {
+    executeOnOperatorPress("+");
+  } else if (e.key === "-") {
+    executeOnOperatorPress("−");
+  } else if (e.key === "*") {
+    executeOnOperatorPress("×");
+  } else if (e.key === "/") {
+    executeOnOperatorPress("÷");
   }
 });
 
