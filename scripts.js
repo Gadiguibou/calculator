@@ -1,3 +1,4 @@
+// Basic functions to compute operations.
 const add = (a, b) => {
   return a + b;
 };
@@ -71,30 +72,51 @@ const executeOnOperatorPress = (operatorContent) => {
 };
 
 const executeOnEqualPress = () => {
+  // Do not execute anything if no operators have been entered
   if (!operator) {
     return;
-  } else if (!displayContent.textContent) {
+  }
+  // If there is an operator but no displayContent to compute
+  // Return current storedOperand
+  else if (!displayContent.textContent) {
     displayContent.textContent = storedOperand;
-  } else {
+  }
+  // (Default case) Compute current operations and display result
+  else {
     displayContent.textContent = operate(
       storedOperand,
       Number(displayContent.textContent),
       operator
     );
   }
+  // Reset all variables
   operator = "";
   storedOperand = null;
   operandDisplayed.textContent = "";
   operatorDisplayed.textContent = operator;
-}
+};
 
+// Set button behaviors
 const numberButtons = document.querySelectorAll(".number-button");
 
-// Add numbers to the screen when numberButtons are clicked
 numberButtons.forEach((numberButton) => {
   numberButton.addEventListener("click", function printNumberToDisplay() {
     displayContent.textContent += numberButton.textContent;
   });
+});
+
+const operatorButtons = document.querySelectorAll(".operator-button");
+
+operatorButtons.forEach((operatorButton) => {
+  operatorButton.addEventListener("click", () => {
+    executeOnOperatorPress(operatorButton.textContent);
+  });
+});
+
+const equalButton = document.querySelector(".equal-button");
+
+equalButton.addEventListener("click", () => {
+  executeOnEqualPress();
 });
 
 const dotButton = document.querySelector(".dot-button");
@@ -107,7 +129,6 @@ dotButton.addEventListener("click", () => {
 
 const clearButton = document.querySelector(".clear-button");
 
-// Clear display when clearButton is clicked.
 clearButton.addEventListener("click", () => {
   clearDisplay();
 });
@@ -120,6 +141,13 @@ allClearButton.addEventListener("click", () => {
   clearDisplay();
 });
 
+const backspaceButton = document.querySelector(".backspace-button");
+
+backspaceButton.addEventListener("click", () => {
+  displayContent.textContent = displayContent.textContent.slice(0, -1);
+});
+
+// Add keyboard support for almost everything
 window.addEventListener("keydown", (e) => {
   if (
     e.key === "1" ||
@@ -151,24 +179,4 @@ window.addEventListener("keydown", (e) => {
   } else if (e.key === "Enter" || e.key === "=") {
     executeOnEqualPress();
   }
-});
-
-const operatorButtons = document.querySelectorAll(".operator-button");
-
-  operatorButtons.forEach((operatorButton) => {
-    operatorButton.addEventListener("click", () => {
-      executeOnOperatorPress(operatorButton.textContent);
-    });
-  });
-
-const equalButton = document.querySelector(".equal-button");
-
-equalButton.addEventListener("click", () => {
-  executeOnEqualPress();
-});
-
-const backspaceButton = document.querySelector(".backspace-button");
-
-backspaceButton.addEventListener("click", () => {
-  displayContent.textContent = displayContent.textContent.slice(0, -1);
 });

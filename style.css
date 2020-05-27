@@ -1,22 +1,22 @@
 :root {
   --darkest: #212629;
-  --darkest-gradient-lighter: #252A2E;
-  --darkest-gradient-darker: #1D2124;
-  --dark: #2C3033;
+  --darkest-gradient-lighter: #252a2e;
+  --darkest-gradient-darker: #1d2124;
+  --dark: #2c3033;
   --dark-gradient-lighter: #303538;
-  --dark-gradient-darker: #272B2E;
-  --dark-hover: #2D3438;
-  --grey: #9C9C9C;
-  --light: #98A8B5;
-  --lighter: #AEC0CF;
-  --white: #FFFFFF;
-  --highlight: #CC8147;/* #6BBBDB; */
-  --highlight-darker: #996035;/* #4B7A99; */
+  --dark-gradient-darker: #272b2e;
+  --dark-hover: #2d3438;
+  --grey: #9c9c9c;
+  --light: #98a8b5;
+  --lighter: #aec0cf;
+  --white: #ffffff;
+  --highlight: #cc8147; /* #6BBBDB; */
+  --highlight-darker: #996035; /* #4B7A99; */
 }
 
 html {
   background-color: var(--darkest);
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 main {
@@ -53,7 +53,7 @@ main {
   flex: 0 0 20px;
   align-items: flex-end;
   font-size: 20px;
-  font-family: 'Noto Serif', serif;
+  font-family: "Noto Serif", serif;
   font-weight: 600;
   line-height: 1;
   color: var(--light);
@@ -128,7 +128,7 @@ main {
   text-align: right;
   font-size: 48px;
   margin: 0 20px;
-  font-family: 'Noto Serif', serif;
+  font-family: "Noto Serif", serif;
   overflow: hidden;
   user-select: none;
 }
@@ -160,17 +160,21 @@ main {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
-                   "seven  eight  nine  divide"
-                   "four   five   six   mult"
-                   "one    two    three substr"
-                   "dot    zero   equal add";
+    "seven  eight  nine  divide"
+    "four   five   six   mult"
+    "one    two    three substr"
+    "dot    zero   equal add";
 }
 
 button {
   margin: 5px;
   border-radius: 10px;
   background-color: var(--darkest);
-  background: -webkit-linear-gradient(top, var(--darkest-gradient-lighter), var(--darkest-gradient-darker));
+  background: -webkit-linear-gradient(
+    top,
+    var(--darkest-gradient-lighter),
+    var(--darkest-gradient-darker)
+  );
   color: var(--white);
   border: 1px solid var(--darkest);
   border-bottom: 4px solid var(--highlight);
@@ -192,7 +196,11 @@ button:disabled:hover {
 
 button:hover {
   background-color: var(--dark-hover);
-  background: -webkit-linear-gradient(top, var(--dark-gradient-lighter), var(--dark-gradient-darker));
+  background: -webkit-linear-gradient(
+    top,
+    var(--dark-gradient-lighter),
+    var(--dark-gradient-darker)
+  );
   border-bottom: 4px solid var(--highlight);
 }
 
