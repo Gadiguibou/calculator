@@ -138,6 +138,8 @@ const allClearButton = document.querySelector(".all-clear-button");
 allClearButton.addEventListener("click", () => {
   operator = "";
   storedOperand = null;
+  operandDisplayed.textContent = "";
+  operatorDisplayed.textContent = operator;
   clearDisplay();
 });
 
