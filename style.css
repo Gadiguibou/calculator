@@ -40,16 +40,49 @@ main {
 
 .input-display {
   display: flex;
-  flex: 0 1 100px;
+  flex-direction: column;
+  flex: 0 0 80px;
   margin: 5px;
   padding: 5px;
   background-color: var(--darkest);
   border-radius: 10px;
+}
+
+.previous-input-display {
+  display: flex;
+  flex: 0 1 20px;
+  align-items: flex-end;
+  font-size: 20px;
+  font-family: 'Noto Serif', serif;
+  font-weight: 600;
+  color: var(--light);
+  user-select: none;
+}
+
+.stored-operand {
+  flex: 1 1 auto;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.stored-operator {
+  flex: 0 0 auto;
+  text-align: right;
+  margin-right: 80px;
+}
+
+.active-input-display {
+  display: flex;
+  flex: 0 1 60px;
+  line-height: 60px;
   align-items: center;
 }
 
 .clear-button-container {
   flex: 0 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .clear-button {
@@ -73,7 +106,7 @@ main {
   color: var(--light);
   font-size: 24px;
   font-weight: 600;
-  margin-left: 20px;
+  margin-left: 5px;
   line-height: 50px;
   text-align: center;
   user-select: none;
@@ -93,7 +126,7 @@ main {
   color: var(--white);
   text-align: right;
   font-size: 48px;
-  margin: 0 10px;
+  margin: 0 20px;
   font-family: 'Noto Serif', serif;
   overflow: hidden;
   user-select: none;
@@ -101,10 +134,13 @@ main {
 
 .backspace-button-container {
   flex: 0 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .backspace-button {
-  margin-right: 20px;
+  margin-right: 10px;
   height: 40px;
   width: 40px;
 }
