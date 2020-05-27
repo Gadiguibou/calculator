@@ -28,6 +28,9 @@ const operate = (firstOperand, secondOperand, operator) => {
 
 const displayContent = document.querySelector(".input-text");
 
+const operandDisplayed = document.querySelector(".stored-operand");
+const operatorDisplayed = document.querySelector(".stored-operator");
+
 const clearDisplay = () => {
   displayContent.textContent = "";
 };
@@ -39,6 +42,7 @@ const executeOnOperatorPress = (operatorContent) => {
   // Update operator if there's already one and the display is empty
   if (!displayContent.textContent && operator) {
     operator = operatorContent;
+    operatorDisplayed.textContent = operator;
   }
   //  Store result of current operation in storedOperand if chaining operations
   else if (displayContent.textContent && operator) {
@@ -47,8 +51,10 @@ const executeOnOperatorPress = (operatorContent) => {
       Number(displayContent.textContent),
       operator
     );
+    operandDisplayed.textContent = storedOperand;
     clearDisplay();
     operator = operatorContent;
+    operatorDisplayed.textContent = operator;
   }
   // Do nothing if operatorButton is pressed when there's no value to compute
   else if (!displayContent.textContent && !operator) {
@@ -57,8 +63,10 @@ const executeOnOperatorPress = (operatorContent) => {
   // Store operand and operator and wait for next input (default case)
   else if (displayContent.textContent && !operator) {
     storedOperand = Number(displayContent.textContent);
+    operandDisplayed.textContent = storedOperand;
     clearDisplay();
     operator = operatorContent;
+    operatorDisplayed.textContent = operator;
   }
 };
 
@@ -76,6 +84,8 @@ const executeOnEqualPress = () => {
   }
   operator = "";
   storedOperand = null;
+  operandDisplayed.textContent = "";
+  operatorDisplayed.textContent = operator;
 }
 
 const numberButtons = document.querySelectorAll(".number-button");
